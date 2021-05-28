@@ -1,13 +1,9 @@
 import requests
 import json
 import cv2 as cv
-import numpy as np
-import mediapipe as mp
 import html
-from xml.sax.saxutils import unescape
-import textwrap 
 import HandTrackingModule as htm
-import time
+
 
 # https://google.github.io/mediapipe/solutions/hands
 # For the paper use explanations from:
@@ -39,7 +35,6 @@ cap.set(4, 720)
 # User input variables
 thumb = "None"
 tempThumb = "None"
-thumbFrames = 0
 responseFrames = 1.5 * fps # 3s * 30fps = 90 frames (usually cameras have 30fps)
 framesCount = 0
 waitStart = 0
@@ -79,7 +74,7 @@ while True:
   lmList = detector.findPosition(frame, draw=False)
 
   # Statement to check if thumb is up or not
-  # If tempThumb remains up or down for at least 3s then thumb value is also set
+  # If tempThumb remains up or down for at least 1.5s then thumb value is also set
   # This is to give the user time to think (also the option of changing their mind) and have a slower transitions to questions
   if len(lmList) != 0:
     framesCount += 1
