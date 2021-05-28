@@ -106,7 +106,7 @@ while True:
         text = "Thumbs up to START quiz, thumbs down or 'q' to QUIT" 
         cv.putText(frame, text, (15, 30), font, 0.7, fontColor, 2, cv.LINE_4)
 
-        # If thimb is up for at least 2s 
+        # If thumb is up for at least 2s 
         if tempThumb == "Up":
           cv.putText(frame, "START", (30, 150), font, 2, (0, 255, 0), 3, cv.LINE_4)
           if thumb == "Up":
